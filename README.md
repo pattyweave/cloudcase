@@ -8,6 +8,7 @@ This project provides a design and implementation of a new staff member onboardi
 2. [Design Choices](#step-2-design-choices)
 3. [Tax and Retirement Calculation Program](#step-3-tax-and-retirement-calculation-program)
 4. [Tests for the Calculation Program](#step-4-tests-for-the-calculation-program)
+5. [Next Steps](#next-steps)
 
 ## Step 1: Onboarding Form Design
 The onboarding form is designed to capture the following information: 
@@ -42,6 +43,24 @@ These tests are executed using the console.assert() function in JavaScript, chec
 ### Running the tests
 
 To run the tests, simply open the developer console in your browser when running the application. If any tests fail, a message will be displayed in the console.
+
+## Next Steps
+
+Looking forward, there are several enhancements that could further improve the functionality and usability of this application. Here are some considerations:
+
+1. **Automated Form Distribution**: Implementing a feature to automatically send the form to new hires would streamline the onboarding process. This could be done via an email automation system or through an internal portal.
+
+2. **API Integration for Data Management**: We could integrate an API to directly feed the form data into our HR management system. This would eliminate the need for manual data entry and ensure real-time updates to employee records.
+
+3. **Calculation on HR Platform**: Shifting the calculation logic to the HR platform would be more secure and efficient. It would also provide an opportunity to incorporate more complex logic, such as considering state-specific tax rates or factoring in benefits and allowances.
+
+4. **Form Customization**: In the future, we could add a feature to customize the form based on department-specific or role-specific needs. For instance, some roles might require capturing additional information like department or supervisor.
+
+5. **User Experience Improvements**: We could continuously work on the interface and user experience to make it more intuitive. For example, we could add tooltips to explain what certain fields mean or provide real-time validation feedback.
+
+6. **Security Enhancements**: As we would be dealing with personal and sensitive information, ensuring the data is securely captured, stored, and processed is critical. We could look into enhancing data encryption, implementing secure access controls, and conducting regular security audits.
+
+By working on these enhancements, we can continue to make this application more robust, secure, and user-friendly, and further streamline our employee onboarding process.
 
 ### Conclusion
 
