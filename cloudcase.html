@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Employee Onboarding Form</title>
+    <style>
+      #form-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 60px); /* subtract the height of the h1 */
+        margin: 0;
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 20px 0; /* add padding at top and bottom to give some space */
+      }
+
+      form {
+        width: 50%; /* approximate 6 column width */
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      form div {
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      textarea {
+        resize: none; /* makes the textarea non-resizable */
+      }
+
+      /* #form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      } */
+
+      #output {
+        width: 50%; /* approximate 6 column width */
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Part 1. Design of New Staff Member Onboarding Form 
+        1. Full Name (Text Input)
+        2. Email Address (Text Input)
+        3. Date of Birth (Date Picker)
+        4. Address (Text Area)
+        5. Salary (Number Input)
+        6. Retirement Contribution Percentage (Number Input)
+    -->
+    <h1>Cloudcase New Employee Onboarding Form</h1>
+    <div id="form-container">
+      <section id="form-section">
+        <form id="onboarding-form">
+          <div>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required />
+          </div>
+          <div>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required />
+          </div>
+          <div>
+            <label for="address">Address:</label>
+            <textarea id="address" required rows="3"></textarea>
+          </div>
+          <div>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" required />
+          </div>
+          <div>
+            <label for="salary">Annual Salary:</label>
+            <input type="number" id="salary" required />
+          </div>
+          <div>
+            <label for="retirementContribution"
+              >Retirement Contribution (%):</label
+            >
+            <input
+              type="number"
+              id="retirementContribution"
+              min="10"
+              required
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <div id="output" class="hidden"></div>
+      </section>
+    </div>
+  </body>
+
+  <script src="./cloudcase.js"></script>
+
+  <script>
+    document
+      .getElementById("onboarding-form")
+      .addEventListener("submit", function (event) {
+        // Prevent the form from submitting normally
+        event.preventDefault();
+
+        // Get the inputted values from the form
+        const salary = Number(document.getElementById("salary").value);
+        const retirementContributionPercent = Number(
+          document.getElementById("retirementContribution").value
+        );
+
+        // Calculate the tax and retirement contributions
+        const calculations = calculateTaxAndRetirement(
+          salary,
+          retirementContributionPercent
+        );
+
+        // Display the calculations and a success message
+        document.getElementById("output").innerHTML = `
+            <p>Your annual salary is $${salary} with a ${retirementContributionPercent}% retirement contribution.</p>
+            <p>Your annual tax is: $${calculations.tax}</p>
+            <p>Your annual retirement contribution is: $${calculations.retirement}</p>
+            <p>Success! Your information has been submitted.</p>
+        `;
+
+        document.getElementById("onboarding-form").classList.add("hidden");
+        document.getElementById("output").classList.remove("hidden");
+      });
+  </script>
+</html>
